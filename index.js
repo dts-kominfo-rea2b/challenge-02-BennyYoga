@@ -11,6 +11,7 @@
     ...
   ]
 */
+
 const arrayObjectPegawai = require("./data-customer.json");
 
 function lakukanLooping(arrPegawai) {
@@ -23,19 +24,33 @@ function lakukanLooping(arrPegawai) {
 
       Contoh: ["Aisyah Nirmala", "Mansur Faisal", ...]
   */
-  let hasilLooping = null;
-
+  let hasilLooping = "";
+  for (const x in dataYangAkanDilooping) {
+    hasilLooping += `"${dataYangAkanDilooping[x].namaDepan} ${dataYangAkanDilooping[x].namaBelakang}", `;
+    // hasilLooping += dataYangAkanDilooping[x].namaDepan + " " + dataYangAkanDilooping[x].namaBelakang;
+  }
+  
   /*
     TODO 2: Buatlah sebuah variabel bernama "jumlahPria"
       yang berisi jumlah pria dari masing masing pegawai
   */
-  let jumlahPria = null;
+  let jumlahPria = 0;
+  for (const x in dataYangAkanDilooping) {
+    if(dataYangAkanDilooping[x].jenisKelamin === "M"){
+      jumlahPria += 1;
+    }
+  }
 
   /*
     TODO 3: Buatlah sebuah variabel bernama "jumlahWanita"
       yang berisi jumlah wanita dari masing masing pegawai
   */
-  let jumlahWanita = null;
+  let jumlahWanita = 0;
+  for (const x in dataYangAkanDilooping) {
+    if(dataYangAkanDilooping[x].jenisKelamin === "F"){
+      jumlahWanita += 1;
+    }
+  }
 
   /*
     TODO 4: Buatlah sebuah variabel bernama "komentar"
@@ -48,7 +63,16 @@ function lakukanLooping(arrPegawai) {
       Apabila imbang, maka komentar akan berisi:
         "Jumlah Pria dan Wanita berimbang"
   */
-  let komentar = null;
+  let komentar = "";
+  if(jumlahPria === jumlahWanita){
+    komentar = "Jumlah Pria dan Wanita berimbang";
+  }
+  else if(jumlahPria > jumlahWanita){
+    komentar = "Jumlah Pria lebih banyak dari Wanita";
+  }
+  else{
+    komentar = "Jumlah Pria lebih banyak dari Wanita";
+  }
 
   // ! JANGAN DIMODIFIKASI
   return {
@@ -65,7 +89,6 @@ function main(data) {
   console.log(hasil.hasilLooping);
   console.log(hasil.jumlahPria);
   console.log(hasil.jumlahWanita);
-
   return hasil;
 }
 
